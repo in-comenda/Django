@@ -17,11 +17,20 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from rest_framework import routers
+from core_api.views import ClienteViewSet
+
+
+# Routers provide an easy way of automatically determining the URL conf.
+router = routers.DefaultRouter()
+router.register(r'clientes', ClienteViewSet)
 
 
 urlpatterns = [
     #path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
+    path('clientes/', include(router.urls)),
     path('', include('galeria.urls')),
-    path('', include('usuarios.urls'))
+    path('', include('usuarios.urls')),
+    path('api-auth/', include('rest_framework.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
