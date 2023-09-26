@@ -31,6 +31,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('clientes/', include(router.urls)),
     path('', include('galeria.urls')),
-    path('', include('usuarios.urls')),
+    path("", include('usuarios.urls')),
     path('api-auth/', include('rest_framework.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
